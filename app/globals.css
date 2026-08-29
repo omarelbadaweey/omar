@@ -1,9 +1,21 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+html{
+  scrollbar-color: #080c17 #000000;
+  scroll-behavior: smooth;
 }
+
+:root {
+  --bg: rgb(0, 55, 255);
+  --text:#cbc5c5;
+  --signal: #22d3ee;
+  --violet: #8b5cf6;
+  --lime: #a3e635;
+}
+
+/*
+
 
 @theme inline {
   --color-background: var(--background);
@@ -24,3 +36,4 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+*/
