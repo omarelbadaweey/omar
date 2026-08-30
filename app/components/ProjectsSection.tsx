@@ -1,11 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Projects } from "./data/data"; 
 import { ExternalLink, Monitor, X, Code2 } from "lucide-react";
 import CursorGrid from "./ui/CursorGrid";
 import StrokeText from "./ui/StrokeText";
+import Image from "next/image";
+// import Image from "next/image";
+
 
 const GithubIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
   <svg
@@ -70,45 +73,36 @@ export const ProjectsSection = () => {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 blur-[180px] rounded-full pointer-events-none" />
         <div className="absolute bottom-10 left-10 w-72 h-72 bg-blue-600/10 blur-[150px] rounded-full pointer-events-none" />
 
-            <div>
-
+        <div>
           <StrokeText
-          text="My Projects"
-          strokeColor="#cbc5c5"
-          fillColor="#cbc5c5"
-          strokeWidth={1}
-          drawDuration={1.6}
-          fillDelay={0.2}
-          stagger={0.05}
-          ease="power2.out"
-          trigger="loop"
-          fillMode="wipe"
-          fontSize={75}
-          fontWeight={800}
-          letterSpacing={0}
-          reverse={false}
-          className=" relative z-10 mb-1"
-        />
-        <span className=" border-3 border-[#e8e0e0] w-70 mx-auto rounded-full block mb-12"></span>
-</div>
+            text="My Projects"
+            strokeColor="#cbc5c5"
+            fillColor="#cbc5c5"
+            strokeWidth={1}
+            drawDuration={1.6}
+            fillDelay={0.2}
+            stagger={0.05}
+            ease="power2.out"
+            trigger="loop"
+            fillMode="wipe"
+            fontSize={75}
+            fontWeight={800}
+            letterSpacing={0}
+            reverse={false}
+            className="relative z-10 mb-1"
+          />
+          <span className="border-b-4 border-[#e8e0e0] w-70 mx-auto rounded-full block mb-12"></span>
+        </div>
+
         {/* Cards Grid */}
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
-          {Projects.map((project, index) => (
-            <motion.div
+          {Projects.map((project) => (
+            <div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                delay: index * 0.08,
-                type: "spring",
-                stiffness: 200,
-                damping: 20,
-              }}
-              className="group relative flex flex-col justify-between rounded-2xl bg-[#121316]/50 border border-slate-800/60 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-cyan-500/50 hover:bg-[#121316]/70 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
+              className="group relative flex flex-col justify-between rounded-2xl bg-[#121316]/70 border border-slate-800/60 overflow-hidden transition-all duration-300 hover:border-cyan-500/50 hover:bg-[#121316] hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
             >
               {/* Browser Header */}
-              <div className="flex items-center justify-between px-4 py-2.5 bg-[#121316]/80 border-b border-slate-800/80 z-20 backdrop-blur-md">
+              <div className="flex items-center justify-between px-4 py-2.5 bg-[#121316] border-b border-slate-800/80 z-20">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
@@ -126,26 +120,31 @@ export const ProjectsSection = () => {
                 </button>
               </div>
 
-              {/* Screen Container */}
-              <div className="relative w-full h-64 bg-black/40 overflow-hidden group/frame">
-                <iframe
-                  src={project.link}
-                  title={project.title}
-                  className="w-full h-full border-none opacity-85 group-hover/frame:opacity-100 transition-opacity duration-300 pointer-events-auto"
-                  loading="lazy"
-                />
+              {/* Screen Container (Image вместо iframe لسرعة الأداء) */}
+              <div 
+                onClick={() => setActiveIframe(project.link)}
+                className="relative w-full h-64 bg-slate-900 overflow-hidden group/frame cursor-pointer"
+              >
 
-                <button
-                  onClick={() => setActiveIframe(project.link)}
-                  className="absolute top-3 right-3 z-30 p-2 rounded-lg bg-black/70 border border-cyan-500/30 text-cyan-300 backdrop-blur-md opacity-0 group-hover/frame:opacity-100 transition-opacity duration-200 hover:bg-cyan-500 hover:text-black cursor-pointer"
-                  title="Expand View"
-                >
-                  <Monitor className="w-4 h-4" />
-                </button>
+
+
+                <Image
+  src={project.image}
+  alt={project.title}
+  fill
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  className="object-cover opacity-80 group-hover/frame:opacity-100 group-hover/frame:scale-105 transition-all duration-300"
+/>
+
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/frame:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500 text-black text-xs font-bold shadow-lg">
+                    <Monitor className="w-4 h-4" /> Live Interactive Preview
+                  </span>
+                </div>
               </div>
 
               {/* Project Details */}
-              <div className="p-6 flex flex-col justify-between flex-grow space-y-5 bg-transparent">
+              <div className="p-6 flex flex-col justify-between grow space-y-5 bg-transparent">
                 <div className="space-y-2">
                   <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20 inline-block">
                     {project.category}
@@ -163,7 +162,7 @@ export const ProjectsSection = () => {
                     return (
                       <span
                         key={i}
-                        className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-lg border backdrop-blur-sm transition-transform duration-200 hover:scale-105 ${style}`}
+                        className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-lg border transition-transform duration-200 hover:scale-105 ${style}`}
                       >
                         <span className="text-sm">{langItem.icon}</span>
                         <span>{langItem.lang}</span>
@@ -186,25 +185,24 @@ export const ProjectsSection = () => {
                     href={project.git}
                     target="_blank"
                     rel="noreferrer"
-                    className="p-2.5 rounded-xl bg-[#121316]/60 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600 transition-all backdrop-blur-sm"
+                    className="p-2.5 rounded-xl bg-[#121316] border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600 transition-all"
                     title="Source Code"
                   >
                     <GithubIcon className="w-4.5 h-4.5" />
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        {/* Modal */}
-        <AnimatePresence>
+        {/* Modal (يحتوي فقط على الـ iframe عند الفتح) */}
           {activeIframe && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-xl p-4 sm:p-6"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 sm:p-6"
             >
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
@@ -221,7 +219,7 @@ export const ProjectsSection = () => {
                   </div>
                   <button
                     onClick={() => setActiveIframe(null)}
-                    className="p-1.5 rounded-full bg-slate-800/80 text-slate-400 hover:text-white hover:bg-rose-500/20 hover:text-rose-400 transition-all cursor-pointer"
+                    className="p-1.5 rounded-full bg-slate-800/80 text-slate-400 hover:text-white hover:bg-rose-500/20 transition-all cursor-pointer"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -235,7 +233,6 @@ export const ProjectsSection = () => {
               </motion.div>
             </motion.div>
           )}
-        </AnimatePresence>
       </section>
     </div>
   );

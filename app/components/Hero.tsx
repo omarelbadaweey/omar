@@ -1,9 +1,6 @@
-
 "use client";
-
-import { ArrowBigRight, ArrowRight, ArrowRightCircle, ArrowUpRightFromCircle } from "lucide-react";
+import { ArrowUpRightFromCircle } from "lucide-react";
 import Link from "next/link";
-
 
 export default function HeroSection() {
   return (
@@ -16,6 +13,7 @@ export default function HeroSection() {
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover opacity-80"
         >
           <source src="/hero3.mp4" type="video/mp4" />

@@ -78,6 +78,7 @@ interface Projects {
   category: string;
   link: string;
   git: string;
+  image: string;
   languages: Languages[];
 }
 
@@ -88,6 +89,7 @@ export const Projects: Projects[] = [
     category: "Next",
     link: "https://www.diamond-dental-centers.com/",
     git: "https://github.com/omarelbadaweey/diamond-dental-centers",
+    image:"/img/diamond.png",
     languages: [
       {
         icon: <FaHtml5 />,
@@ -146,6 +148,7 @@ export const Projects: Projects[] = [
     category: "React",
     link: "https://www.american-council.com/",
     git: "https://github.com/omarelbadaweey/american-council",
+    image:"/img/ameircam.png",
     languages: [
       {
         icon: <FaHtml5 />,
@@ -186,6 +189,7 @@ export const Projects: Projects[] = [
     category: "Next",
     link: "https://mx-blond.vercel.app/",
     git: "https://github.com/omarelbadaweey/MX",
+    image:"/img/mx-store.png",
     languages: [
       {
         icon: <FaHtml5 />,
@@ -232,6 +236,7 @@ export const Projects: Projects[] = [
     category: "React",
     link: "https://www.alekhllass.com/",
     git: "https://github.com/omarelbadaweey/Alekhlass",
+    image:"/img/elekhlass.png",
     languages: [
       {
         icon: <FaHtml5 />,
@@ -272,6 +277,7 @@ export const Projects: Projects[] = [
     category: "React",
     link: "https://orange-store-theta.vercel.app/",
     git: "https://github.com/omarelbadaweey/Orange_Store",
+    image:"/img/orange.png",
     languages: [
       {
         icon: <FaHtml5 />,
@@ -312,6 +318,7 @@ export const Projects: Projects[] = [
     category: "React",
     link: "https://omar-ecommece.vercel.app/",
     git: "https://github.com/omarelbadaweey/Omar-Ecommece",
+    image:"/img/eccomerce.png",
     languages: [
       {
         icon: <FaHtml5 />,
@@ -352,6 +359,7 @@ export const Projects: Projects[] = [
     category: "JS",
     link: "https://badawey-store.vercel.app/",
     git: "https://github.com/omarelbadaweey/Badawey-Store",
+    image:"/img/badawey.png",
     languages: [
       {
         icon: <FaHtml5 />,
@@ -386,6 +394,7 @@ export const Projects: Projects[] = [
     category: "CSS",
     link: "https://simple-booking-five.vercel.app/",
     git: "https://github.com/omarelbadaweey/Simple-booking",
+    image:"/img/Simple.png",
     languages: [
       {
         icon: <FaHtml5 />,

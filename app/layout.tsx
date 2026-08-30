@@ -31,7 +31,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header/>
         <GlowCursor>
           <AnimatePresence>
-
           {children}
           </AnimatePresence>
         </GlowCursor>
