@@ -379,7 +379,6 @@ return (
     <canvas
       ref={canvasRef}
       className="pointer-events-none fixed inset-0 z-50 h-full w-full max-w-full overflow-hidden select-none"
-      style={{ mixBlendMode: blendMode }}
       aria-hidden="true"
     />
     

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { projectsData } from "./data/data"; 
 import { ExternalLink, Monitor, X, Code2 } from "lucide-react";
 import StrokeText from "./ui/StrokeText";
@@ -180,7 +180,7 @@ export const ProjectsSection = () => {
       </div>
 
       {/* Modal Preview */}
-      <AnimatePresence>
+      {/* <AnimatePresence> */}
         {activeIframe && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -217,7 +217,7 @@ export const ProjectsSection = () => {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      {/* </AnimatePresence> */}
     </section>
   );
 };

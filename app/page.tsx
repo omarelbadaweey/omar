@@ -1,7 +1,9 @@
+import dynamic from 'next/dynamic';
 import Hero from './components/Hero';
-import ProjectsSection from './components/ProjectsSection';
-import SkillsSection from './components/Skills';
-import About from './components/About';
+
+const About = dynamic(() => import('./components/About'), { ssr: true });
+const SkillsSection = dynamic(() => import('./components/Skills'), { ssr: true });
+const ProjectsSection = dynamic(() => import('./components/ProjectsSection'), { ssr: true });
 
 export default function Home() {
   return (
