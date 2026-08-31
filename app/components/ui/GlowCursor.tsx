@@ -373,21 +373,22 @@ const GlowCursor = ({
     };
   }, [maxDevicePixelRatio]);
 
-  return (
-    <div className={`relative min-h-screen w-full bg-[#070A12] ${className}`} style={style} {...rest}>
-      {/* الـ Canvas ثابت بطول وعرض الشاشة بالكامل */}
-      <canvas
-        ref={canvasRef}
-        className="pointer-events-none fixed inset-0 z-50 h-full w-full select-none"
-        style={{ mixBlendMode: blendMode }}
-        aria-hidden="true"
-      />
-      {/* باقي المحتوى تحت الكأنفاس بصرياً ومتاح للتفاعل بالماوس */}
-      <div className="relative z-10 w-full min-h-screen">
-        {children}
-      </div>
+return (
+  <div className={`relative min-h-screen w-full max-w-full overflow-x-hidden bg-[#070A12] ${className}`} style={style} {...rest}>
+    {/* تم إضافة max-w-full و overflow-hidden للكانفاس */}
+    <canvas
+      ref={canvasRef}
+      className="pointer-events-none fixed inset-0 z-50 h-full w-full max-w-full overflow-hidden select-none"
+      style={{ mixBlendMode: blendMode }}
+      aria-hidden="true"
+    />
+    
+    {/* المحتوى الداخلي مع تقييد العرض */}
+    <div className="relative z-10 w-full min-h-screen max-w-full overflow-x-hidden">
+      {children}
     </div>
-  );
+  </div>
+);
 };
 
 export default GlowCursor;
