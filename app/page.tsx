@@ -1,13 +1,15 @@
 import Hero from './components/Hero';
 import ProjectsSection from './components/ProjectsSection';
 import SkillsSection from './components/Skills';
+import About from './components/About';
 
 export default function Home() {
   return (
-      <div>
+      <main>
         <Hero />
+        <About/>
         <SkillsSection/>
         <ProjectsSection/>
-      </div>
+      </main>
   );
 }

@@ -1,14 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Projects } from "./data/data"; 
 import { ExternalLink, Monitor, X, Code2 } from "lucide-react";
-import CursorGrid from "./ui/CursorGrid";
 import StrokeText from "./ui/StrokeText";
 import Image from "next/image";
-// import Image from "next/image";
-
 
 const GithubIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
   <svg
@@ -47,194 +44,181 @@ export const ProjectsSection = () => {
   const [activeIframe, setActiveIframe] = useState<string | null>(null);
 
   return (
-    <div className="relative w-full min-h-screen bg-[#090a0f] overflow-hidden">
-      {/* 1. Canvas Layer in Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <CursorGrid
-          cellSize={70}
-          color="#D946EF"
-          radius={140}
-          falloff="smooth"
-          holdTime={400}
-          fadeDuration={800}
-          lineWidth={1.2}
-          maxOpacity={1}
-          fillOpacity={0}
-          gridOpacity={0.1}
-          cellRadius={0}
-          clickPulse
-          pulseSpeed={600}
+    <section
+      id="projects"
+      className="relative w-full min-h-screen py-16 px-4 sm:px-6 text-slate-100 flex flex-col items-center justify-center font-sans select-none bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: "url('/bg.png')",
+      }}
+    >
+      {/* طبقة تظليل سوداء شفافة لتوضيح الكروت فوق خلفية bg.png */}
+      <div className="absolute inset-0 bg-black/15 z-0 pointer-events-none" />
+
+      {/* Glows خلفية ناعمة */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-cyan-500/10 blur-[180px] rounded-full pointer-events-none z-0" />
+      <div className="absolute bottom-10 left-10 w-72 h-72 bg-blue-600/10 blur-[150px] rounded-full pointer-events-none z-0" />
+
+      {/* Header Section */}
+      <div className="relative z-10 flex flex-col items-center">
+        <StrokeText
+          text="My Projects"
+          strokeColor="#cbc5c5"
+          fillColor="#cbc5c5"
+          strokeWidth={1}
+          drawDuration={1.6}
+          fillDelay={0.2}
+          stagger={0.05}
+          ease="power2.out"
+          trigger="loop"
+          fillMode="wipe"
+          fontSize={75}
+          fontWeight={800}
+          letterSpacing={0}
+          reverse={false}
+          className="relative z-10 mb-1"
         />
+        <span className="border-b-4 border-[#e8e0e0] w-48 mx-auto rounded-full block mb-12"></span>
       </div>
 
-      {/* 2. Content Layer Above Canvas */}
-      <section id="projects" className="relative z-10 min-h-screen py-16 px-4 sm:px-6 text-slate-100 flex flex-col items-center justify-center font-sans select-none bg-transparent">
-        {/* Soft Glow Backgrounds */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 blur-[180px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-10 left-10 w-72 h-72 bg-blue-600/10 blur-[150px] rounded-full pointer-events-none" />
+      {/* Cards Grid */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
+        {Projects.map((project) => (
+          <div
+            key={project.id}
+            className="group relative flex flex-col justify-between rounded-2xl bg-[#121316]/80 border border-slate-800/80 overflow-hidden backdrop-blur-md transition-all duration-300 hover:border-cyan-500/50 hover:bg-[#121316] hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
+          >
+            {/* Browser Header */}
+            <div className="flex items-center justify-between px-4 py-2.5 bg-[#121316] border-b border-slate-800/80 z-20">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+              </div>
+              <span className="text-[11px] font-mono text-slate-500 truncate max-w-50">
+                {project.link}
+              </span>
+              <button
+                onClick={() => setActiveIframe(project.link)}
+                className="text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer"
+                title="Fullscreen Preview"
+              >
+                <Monitor className="w-3.5 h-3.5" />
+              </button>
+            </div>
 
-        <div>
-          <StrokeText
-            text="My Projects"
-            strokeColor="#cbc5c5"
-            fillColor="#cbc5c5"
-            strokeWidth={1}
-            drawDuration={1.6}
-            fillDelay={0.2}
-            stagger={0.05}
-            ease="power2.out"
-            trigger="loop"
-            fillMode="wipe"
-            fontSize={75}
-            fontWeight={800}
-            letterSpacing={0}
-            reverse={false}
-            className="relative z-10 mb-1"
-          />
-          <span className="border-b-4 border-[#e8e0e0] w-70 mx-auto rounded-full block mb-12"></span>
-        </div>
-
-        {/* Cards Grid */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
-          {Projects.map((project) => (
-            <div
-              key={project.id}
-              className="group relative flex flex-col justify-between rounded-2xl bg-[#121316]/70 border border-slate-800/60 overflow-hidden transition-all duration-300 hover:border-cyan-500/50 hover:bg-[#121316] hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
+            {/* Screen Container */}
+            <div 
+              onClick={() => setActiveIframe(project.link)}
+              className="relative w-full h-64 bg-slate-900 overflow-hidden group/frame cursor-pointer"
             >
-              {/* Browser Header */}
-              <div className="flex items-center justify-between px-4 py-2.5 bg-[#121316] border-b border-slate-800/80 z-20">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                </div>
-                <span className="text-[11px] font-mono text-slate-500 truncate max-w-[200px]">
-                  {project.link}
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover opacity-80 group-hover/frame:opacity-100 group-hover/frame:scale-105 transition-all duration-300"
+              />
+
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/frame:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500 text-black text-xs font-bold shadow-lg">
+                  <Monitor className="w-4 h-4" /> Live Interactive Preview
                 </span>
-                <button
-                  onClick={() => setActiveIframe(project.link)}
-                  className="text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer"
-                  title="Fullscreen Preview"
+              </div>
+            </div>
+
+            {/* Project Details */}
+            <div className="p-6 flex flex-col justify-between grow space-y-5 bg-transparent">
+              <div className="space-y-2">
+                <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20 inline-block">
+                  {project.category}
+                </span>
+
+                <h3 className="text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors duration-200">
+                  {project.title}
+                </h3>
+              </div>
+
+              {/* Tech Badges */}
+              <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/50">
+                {project.languages.map((langItem, i) => {
+                  const style = getLanguageStyle(langItem.lang);
+                  return (
+                    <span
+                      key={i}
+                      className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-lg border transition-transform duration-200 hover:scale-105 ${style}`}
+                    >
+                      <span className="text-sm">{langItem.icon}</span>
+                      <span>{langItem.lang}</span>
+                    </span>
+                  );
+                })}
+              </div>
+
+              {/* Buttons */}
+              <div className="flex items-center gap-3 pt-1">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 py-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold text-xs flex items-center justify-center gap-2 transition-all hover:bg-cyan-500 hover:text-black"
                 >
-                  <Monitor className="w-3.5 h-3.5" />
+                  <ExternalLink className="w-4 h-4" /> Live Link
+                </a>
+                <a
+                  href={project.git}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-2.5 rounded-xl bg-[#121316] border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600 transition-all"
+                  title="Source Code"
+                >
+                  <GithubIcon className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Modal Preview */}
+      <AnimatePresence>
+        {activeIframe && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 sm:p-6"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative w-full max-w-5xl h-[80vh] bg-[#121316] rounded-2xl border border-cyan-500/30 overflow-hidden shadow-[0_0_40px_rgba(6,182,212,0.2)] flex flex-col"
+            >
+              <div className="flex items-center justify-between px-4 py-3 bg-[#16171a] border-b border-slate-800">
+                <div className="flex items-center gap-2">
+                  <Code2 className="w-4 h-4 text-cyan-400" />
+                  <span className="text-xs font-bold text-white truncate max-w-xs sm:max-w-md">
+                    {activeIframe}
+                  </span>
+                </div>
+                <button
+                  onClick={() => setActiveIframe(null)}
+                  className="p-1.5 rounded-full bg-slate-800/80 text-slate-400 hover:text-white hover:bg-rose-500/20 transition-all cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
-              {/* Screen Container (Image вместо iframe لسرعة الأداء) */}
-              <div 
-                onClick={() => setActiveIframe(project.link)}
-                className="relative w-full h-64 bg-slate-900 overflow-hidden group/frame cursor-pointer"
-              >
-
-
-
-                <Image
-  src={project.image}
-  alt={project.title}
-  fill
-  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-  className="object-cover opacity-80 group-hover/frame:opacity-100 group-hover/frame:scale-105 transition-all duration-300"
-/>
-
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/frame:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500 text-black text-xs font-bold shadow-lg">
-                    <Monitor className="w-4 h-4" /> Live Interactive Preview
-                  </span>
-                </div>
-              </div>
-
-              {/* Project Details */}
-              <div className="p-6 flex flex-col justify-between grow space-y-5 bg-transparent">
-                <div className="space-y-2">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20 inline-block">
-                    {project.category}
-                  </span>
-
-                  <h3 className="text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors duration-200">
-                    {project.title}
-                  </h3>
-                </div>
-
-                {/* Tech Badges */}
-                <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/50">
-                  {project.languages.map((langItem, i) => {
-                    const style = getLanguageStyle(langItem.lang);
-                    return (
-                      <span
-                        key={i}
-                        className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-lg border transition-transform duration-200 hover:scale-105 ${style}`}
-                      >
-                        <span className="text-sm">{langItem.icon}</span>
-                        <span>{langItem.lang}</span>
-                      </span>
-                    );
-                  })}
-                </div>
-
-                {/* Buttons */}
-                <div className="flex items-center gap-3 pt-1">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 py-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold text-xs flex items-center justify-center gap-2 transition-all hover:bg-cyan-500 hover:text-black"
-                  >
-                    <ExternalLink className="w-4 h-4" /> Live Link
-                  </a>
-                  <a
-                    href={project.git}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2.5 rounded-xl bg-[#121316] border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600 transition-all"
-                    title="Source Code"
-                  >
-                    <GithubIcon className="w-4.5 h-4.5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Modal (يحتوي فقط على الـ iframe عند الفتح) */}
-          {activeIframe && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 sm:p-6"
-            >
-              <motion.div
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                className="relative w-full max-w-5xl h-[80vh] bg-[#121316] rounded-2xl border border-cyan-500/30 overflow-hidden shadow-[0_0_40px_rgba(6,182,212,0.2)] flex flex-col"
-              >
-                <div className="flex items-center justify-between px-4 py-3 bg-[#16171a] border-b border-slate-800">
-                  <div className="flex items-center gap-2">
-                    <Code2 className="w-4 h-4 text-cyan-400" />
-                    <span className="text-xs font-bold text-white truncate max-w-xs sm:max-w-md">
-                      {activeIframe}
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => setActiveIframe(null)}
-                    className="p-1.5 rounded-full bg-slate-800/80 text-slate-400 hover:text-white hover:bg-rose-500/20 transition-all cursor-pointer"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
-
-                <iframe
-                  src={activeIframe}
-                  className="w-full h-full border-none bg-white"
-                  title="Project Full Live Preview"
-                />
-              </motion.div>
+              <iframe
+                src={activeIframe}
+                className="w-full h-full border-none bg-white"
+                title="Project Full Live Preview"
+              />
             </motion.div>
-          )}
-      </section>
-    </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   );
 };
 

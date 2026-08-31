@@ -2,9 +2,9 @@
 import { ArrowUpRightFromCircle } from "lucide-react";
 import Link from "next/link";
 
-export default function HeroSection() {
+ function Hero() {
   return (
-    <section className="relative w-full min-h-screen  bg-[#07090E] text-white flex flex-col justify-between p-6 sm:p-8 md:p-16 overflow-hidden select-none font-sans">
+    <section id="hero" className="relative w-full min-h-screen  text-white flex flex-col justify-between p-6 sm:p-8 md:p-16 overflow-hidden select-none font-sans">
       
       {/* 1. فيديو الخلفية المخصص (ضع ملف الفيديو الخاص بك داخل مجلد public باسم hero-bg.mp4) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -14,6 +14,7 @@ export default function HeroSection() {
           muted
           playsInline
           preload="auto"
+          poster="/poster.png" 
           className="w-full h-full object-cover opacity-80"
         >
           <source src="/hero3.mp4" type="video/mp4" />
@@ -44,7 +45,7 @@ export default function HeroSection() {
         </h1>
 
         {/* الوصف (Subtitle) */}
-        <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl font-normal leading-relaxed">
+        <p className="text-gray-200 text-sm sm:text-base md:text-lg max-w-2xl font-normal leading-relaxed">
           Full-Stack Web Developer with 4+ years of expertise in crafting high-performance Frontend experiences and 2+ years scaling robust Backend systems. I specialize in building ultra-fast, modern, and SEO-optimized web applications with sleek UI animations and scalable architecture.
         </p>
         {/* الأزرار (CTA Buttons) */}
@@ -63,3 +64,4 @@ export default function HeroSection() {
     </section>
   );
 }
+export default Hero;

@@ -46,20 +46,16 @@ export const Footer = () => {
   const [showScroll, setShowScroll] = useState(false);
   const [whatsappMessage, setWhatsappMessage] = useState("");
 
-  // رقم الواتساب الخاص بك بالصيغة الدولية بدون (+)
-  const whatsappNumber = "201000000000"; // استبدله برقمك
+  // رقم الواتساب الخاص بك
+  const whatsappNumber = "201008790584";
 
-  // التحكم في ظهور زر الرجوع لأعلى عند التمرير
+  // تحسين أداء الـ Scroll Event
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScroll(true);
-      } else {
-        setShowScroll(false);
-      }
+      setShowScroll(window.scrollY > 300);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -87,19 +83,19 @@ export const Footer = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      href: "https://github.com/OmarElbadawey",
+      href: "https://github.com/omarelbadaweey?tab=repositories",
       icon: <GithubIcon className="w-5 h-5" />,
       color: "hover:text-white hover:border-white/40 hover:shadow-white/10",
     },
     {
       name: "LinkedIn",
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/omar-elbadawey-4950832b3",
       icon: <LinkedinIcon className="w-5 h-5" />,
       color: "hover:text-cyan-400 hover:border-cyan-500/40 hover:shadow-cyan-500/20",
     },
     {
       name: "Email",
-      href: "mailto:contact@example.com",
+      href: "mailto:malbdwy890@gmail.com",
       icon: <Mail className="w-5 h-5" />,
       color: "hover:text-sky-400 hover:border-sky-500/40 hover:shadow-sky-500/20",
     },
@@ -110,18 +106,15 @@ export const Footer = () => {
       color: "hover:text-emerald-400 hover:border-emerald-500/40 hover:shadow-emerald-500/20",
     },
     {
-      name: "Whats App",
-      href: "tel:+201008790584",
+      name: "WhatsApp",
+      href: `https://wa.me/${whatsappNumber}`,
       icon: <FaWhatsapp className="w-5 h-5" />,
       color: "hover:text-emerald-400 hover:border-emerald-500/40 hover:shadow-emerald-500/20",
     },
   ];
 
   return (
-    <footer id="contact" className="relative bg-[#07080c] border-t border-slate-800/80 text-slate-300 font-sans overflow-hidden">
-      {/* خلفية Glow ناعمة */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none" />
-
+    <footer id="contact" className="relative bg-[#07090E] border-t border-slate-800/80 text-slate-300 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-12 relative z-10">
         
         {/* Top Header Section */}

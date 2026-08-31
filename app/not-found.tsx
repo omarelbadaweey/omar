@@ -9,18 +9,18 @@ export default function NotFound() {
   return (
     <div className="relative min-h-screen bg-[#07080c] text-slate-100 flex items-center justify-center p-6 overflow-hidden font-sans select-none">
       {/* خلفية Glow نيون ناعمة */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-cyan-500/10 blur-[180px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-sky-900/10 blur-[160px] rounded-full pointer-events-none" />
 
       {/* Grid Pattern خلفية خفيفة */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293710_1px,transparent_1px),linear-gradient(to_bottom,#1f293710_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293710_1px,transparent_1px),linear-gradient(to_bottom,#1f293710_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-2xl w-full flex flex-col items-center text-center">
         
         {/* عنصر الصورة / الـ Visual 404 */}
         <div className="relative flex items-center justify-center mb-8">
           {/* النص العملاق 404 في الخلفية */}
-          <h1 className="text-[140px] sm:text-[180px] font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-slate-800/80 to-slate-900/20 leading-none tracking-tighter select-none">
+          <h1 className="text-[140px] sm:text-[180px] font-extrabold text-transparent bg-clip-text bg-linear-to-b from-slate-800/80 to-slate-900/20 leading-none tracking-tighter select-none">
             404
           </h1>
 
