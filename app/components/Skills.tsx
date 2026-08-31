@@ -1,7 +1,7 @@
 
 "use client";
 
-import { Skills } from "./data/data";
+import { skillsData } from "./data/data";
 import StrokeText from "./ui/StrokeText";
 
 export const SkillsSection = () => {
@@ -40,7 +40,7 @@ export const SkillsSection = () => {
 
       {/* 2. شبكة المهارات (Nodes Grid) فوق الخلفية */}
       <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 max-w-7xl w-full">
-        {Skills.map((skill) => (
+        {skillsData.map((skill) => (
           <div
             key={skill.name}
             className="group relative flex flex-col items-center justify-center p-6 rounded-3xl bg-[#16171a]/80 border border-zinc-800/80 backdrop-blur-md transition-all duration-200 hover:border-cyan-400 hover:bg-[#1a1c21] hover:-translate-y-1 cursor-pointer transform-gpu shadow-lg"

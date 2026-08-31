@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Projects } from "./data/data"; 
+import { projectsData } from "./data/data"; 
 import { ExternalLink, Monitor, X, Code2 } from "lucide-react";
 import StrokeText from "./ui/StrokeText";
 import Image from "next/image";
@@ -82,7 +82,7 @@ export const ProjectsSection = () => {
 
       {/* Cards Grid */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
-        {Projects.map((project) => (
+        {projectsData.map((project) => (
           <div
             key={project.id}
             className="group relative flex flex-col justify-between rounded-2xl bg-[#121316]/80 border border-slate-800/80 overflow-hidden backdrop-blur-md transition-all duration-300 hover:border-cyan-500/50 hover:bg-[#121316] hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
