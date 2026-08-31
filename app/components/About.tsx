@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="w-full py-24 px-6 sm:px-12 md:px-20  text-white"
+      className="w-full py-24 px-6 sm:px-12 md:px-20  text-white bg-[#070A12]"
     >
       <div>
         <StrokeText

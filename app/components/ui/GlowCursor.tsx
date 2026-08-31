@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useRef, type HTMLAttributes, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type HTMLAttributes, type ReactNode } from 'react';
 import { Mesh, Program, Renderer, Triangle } from 'ogl';
 
 const MAX_POINTS = 64;
@@ -195,6 +195,16 @@ const GlowCursor = ({
 }: GlowCursorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const propsRef = useRef<GlowCursorConfig>({} as GlowCursorConfig);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     propsRef.current = {
@@ -376,11 +386,13 @@ const GlowCursor = ({
 return (
   <div className={`relative min-h-screen w-full max-w-full overflow-x-hidden bg-[#070A12] ${className}`} style={style} {...rest}>
     {/* تم إضافة max-w-full و overflow-hidden للكانفاس */}
-    <canvas
-      ref={canvasRef}
-      className="pointer-events-none fixed inset-0 z-50 h-full w-full max-w-full overflow-hidden select-none"
-      aria-hidden="true"
-    />
+    {!isMobile && (
+      <canvas
+        ref={canvasRef}
+        className="pointer-events-none fixed inset-0 z-50 h-full w-full max-w-full overflow-hidden select-none"
+        aria-hidden="true"
+      />
+    )}
     
     {/* المحتوى الداخلي مع تقييد العرض */}
     <div className="relative z-10 w-full min-h-screen max-w-full overflow-x-hidden">
