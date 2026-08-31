@@ -14,7 +14,7 @@ export const SkillsSection = () => {
       }}
     >
       {/* طبقة تظليل سوداء شفافة اختيارية عشان الكروت والنص يقرو بشكل واضح فوق الصورة */}
-      <div className="absolute inset-0 bg-black/15 z-0 pointer-events-none" />
+      <div className="absolute inset-0 z-0 pointer-events-none" />
 
       {/* 1. Title Skills */}
       <div className="relative z-10 flex flex-col items-center mb-12">

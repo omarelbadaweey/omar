@@ -52,7 +52,7 @@ export const ProjectsSection = () => {
       }}
     >
       {/* طبقة تظليل سوداء شفافة لتوضيح الكروت فوق خلفية bg.png */}
-      <div className="absolute inset-0 bg-black/15 z-0 pointer-events-none" />
+      <div className="absolute inset-0  z-0 pointer-events-none" />
 
       {/* Glows خلفية ناعمة */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-cyan-500/10 blur-[180px] rounded-full pointer-events-none z-0" />
