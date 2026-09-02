@@ -154,16 +154,15 @@ export const Footer = () => {
 
             <div className="pt-2 flex flex-wrap gap-3">
               <a
-                href="/resume.pdf"
-                target="_blank"
+                href="/cv.pdf"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold transition-all hover:bg-cyan-500 hover:text-black hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]"
               >
-                <FileText className="w-4 h-4" /> View Resume
+                <FileText className="w-4 h-4" /> View CV
               </a>
               <a
-                href="/resume.pdf"
-                download
+                href="/cv.pdf"
+                download="Omar_Elbadawey_CV.pdf"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#121316] border border-slate-700 text-slate-300 text-xs font-bold transition-all hover:border-slate-500 hover:text-white"
               >
                 <Download className="w-4 h-4" /> Download CV

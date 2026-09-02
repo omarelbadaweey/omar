@@ -88,19 +88,19 @@ export default function Header() {
         {/* Action Button / Auth */}
 
         <div className="hidden md:flex items-center gap-3">
-          <Link
-            href="/#contact"
+          <a
+            href="cv.pdf"
             className="rounded-full bg-linear-to-r from-cyan-500 to-violet-600 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all duration-200"
           >
             View CV 📝
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Hamburger Button */}
 
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors"
+          className="md:hidden p-2 cursor-pointer rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors"
           aria-label="Toggle Menu"
         >
           {mobileMenuOpen ? (
@@ -151,13 +151,13 @@ export default function Header() {
           })}
 
           <div className="mt-2 pt-2 border-t border-white/10">
-            <Link
-              href="/#contact"
+            <a
+              href="cv.pdf"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center w-full rounded-2xl bg-linear-to-r from-cyan-500 to-violet-600 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-500/20"
             >
               View CV 📝
-            </Link>
+            </a>
           </div>
         </motion.div>
       )}

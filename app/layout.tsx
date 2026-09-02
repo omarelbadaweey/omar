@@ -1,75 +1,10 @@
-// import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
-// import "./globals.css";
-// import Header from "./components/Header"
-// import GlowCursor from "./components/ui/GlowCursor";
-// import { AnimatePresence } from "framer-motion";
-// import Footer from "./components/Footer";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
-// export const metadata: Metadata = {
-// title: "Omar El-Badawey | Full-Stack Developer",
-//   description:
-//     "Full-Stack Web Developer specializing in MERN stack, Next.js, and modern web application design with high performance and scalable architecture.",
-//   icons: {
-//     icon: "/logo.jpeg", // ضيف ملف الأيقونة في مجلد public
-//     shortcut: "/logo.jpeg",
-//     apple: "/logo.jpeg", // اختياري لأجهزة أبل
-//   },
-//   openGraph: {
-//     title: "Omar El-Badawey | Full-Stack Developer",
-//     description: "Full-Stack Web Developer specializing in MERN stack & Next.js.",
-//     url: "https://your-domain.com",
-//     siteName: "Omar El-Badawey Portfolio",
-//     locale: "en_US",
-//     type: "website",
-//   },
-// };
-
-// export default function RootLayout({ children }: LayoutProps<"/">) {
-//   return (
-//     <html
-//       lang="en"
-//       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-//     >
-//       <body className="min-h-full flex flex-col">
-//         <Header/>
-//         <GlowCursor>
-//           <AnimatePresence>
-//           {children}
-//           </AnimatePresence>
-//         </GlowCursor>
-//         <Footer/>
-//         </body>
-//     </html>
-//   );
-// }
-
-
-
-
-
-// 
-
-
-
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
-import GlowCursor from "./components/ui/GlowCursor";
 import { AnimatePresence } from "framer-motion";
 import Footer from "./components/Footer";
+import CustomCursor from "./components/ui/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -199,10 +134,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
+        <CustomCursor/>
         <Header />
-        {/* <GlowCursor> */}
           <AnimatePresence>{children}</AnimatePresence>
-        {/* </GlowCursor> */}
         <Footer />
       </body>
     </html>

@@ -43,7 +43,7 @@ export const SkillsSection = () => {
         {skillsData.map((skill) => (
           <div
             key={skill.name}
-            className="group relative flex flex-col items-center justify-center p-6 rounded-3xl bg-[#16171a]/80 border border-zinc-800/80 sm:backdrop-blur-md transition-all duration-200 hover:border-cyan-400 hover:bg-[#1a1c21] hover:-translate-y-1 cursor-pointer transform-gpu shadow-lg"
+            className="group relative flex flex-col items-center justify-center p-6 rounded-3xl bg-[#16171a]/80 border border-zinc-800/80 backdrop-blur-md transition-all duration-200 hover:border-cyan-400 hover:bg-[#1a1c21] hover:-translate-y-1 cursor-pointer transform-gpu shadow-lg"
           >
             {/* الأيقونة */}
             <div className="relative text-5xl mb-3 text-zinc-300 transition-colors duration-200 group-hover:scale-110 group-hover:text-white">

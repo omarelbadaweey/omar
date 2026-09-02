@@ -1,13 +1,11 @@
-import dynamic from 'next/dynamic';
 import Hero from './components/Hero';
-
-const About = dynamic(() => import('./components/About'), { ssr: true, loading: () => <div className="w-full min-h-[50vh]" /> });
-const SkillsSection = dynamic(() => import('./components/Skills'), { ssr: true, loading: () => <div className="w-full min-h-screen" /> });
-const ProjectsSection = dynamic(() => import('./components/ProjectsSection'), { ssr: true, loading: () => <div className="w-full min-h-screen" /> });
+import ProjectsSection from './components/ProjectsSection';
+import SkillsSection from './components/Skills';
+import About from './components/About';
 
 export default function Home() {
   return (
-      <main>
+      <main className='bg-[#070A12]'>
         <Hero />
         <About/>
         <SkillsSection/>

@@ -85,7 +85,7 @@ export const ProjectsSection = () => {
         {projectsData.map((project) => (
           <div
             key={project.id}
-            className="group relative flex flex-col justify-between rounded-2xl bg-[#121316]/80 border border-slate-800/80 overflow-hidden sm:backdrop-blur-md transition-all duration-300 hover:border-cyan-500/50 hover:bg-[#121316] hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
+            className="group relative flex flex-col justify-between rounded-2xl bg-[#121316]/80 border border-slate-800/80 overflow-hidden backdrop-blur-md transition-all duration-300 hover:border-cyan-500/50 hover:bg-[#121316] hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
           >
             {/* Browser Header */}
             <div className="flex items-center justify-between px-4 py-2.5 bg-[#121316] border-b border-slate-800/80 z-20">
