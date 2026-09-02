@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "./components/Header";
 import { AnimatePresence } from "framer-motion";
 import Footer from "./components/Footer";
-import CustomCursor from "./components/ui/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -134,7 +133,6 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <CustomCursor/>
         <Header />
           <AnimatePresence>{children}</AnimatePresence>
         <Footer />

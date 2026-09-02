@@ -284,3 +284,4 @@ const StrokeText = ({
 };
 
 export default StrokeText;
+

@@ -12,12 +12,3 @@ html, body {
   overflow-x: hidden;
 }
 
-
-/*  */
-
-/* إخفاء سهم الماوس العادي على جميع العناصر للشاشات التي تستخدم ماوس */
-@media (pointer: fine) {
-  html, body, a, button, input, textarea, select, [role="button"] {
-    cursor: none !important;
-  }
-}
